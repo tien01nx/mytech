@@ -84,7 +84,7 @@ public class SignUpActivity extends AppCompatActivity {
 //                            String accountId = myRef.push().getKey();
 
                             Account account = new Account(email, password, username, "");
-                            Student student = new Student(email,username);
+                            Student student = new Student(email,username,"default");
 
 //                            myRef.child(accountId).setValue(account).addOnCompleteListener(new OnCompleteListener<Void>() {
 //                                @Override

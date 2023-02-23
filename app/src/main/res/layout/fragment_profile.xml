@@ -47,11 +47,11 @@
                 android:textSize="18dp" />
 
             <EditText
-                android:id="@+id/username"
+                android:id="@+id/name_profile"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:text="@{student.name}" />
+                android:text="Name" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -65,7 +65,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:text="@{student.email}"
+                android:text="Email"
+                android:id="@+id/email_profile"
                 android:textColor="@color/black"
                 android:textSize="18dp" />
 
@@ -82,7 +83,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:text="@{student.date_of_birth}" />
+                android:text="DateOfBirth" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -97,7 +98,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:text="@{student.address}" />
+                android:text="address" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -108,10 +109,11 @@
                 android:textSize="18dp" />
 
             <EditText
+                android:id="@+id/phone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:text="@{student.phone}" />
+                android:text="Phone" />
 
         </LinearLayout>
 

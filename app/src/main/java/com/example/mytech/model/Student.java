@@ -1,6 +1,9 @@
 package com.example.mytech.model;
 
 
+import android.widget.EditText;
+import android.widget.TextView;
+
 public class Student  {
     // học viên
     private String student_id;
@@ -18,9 +21,29 @@ public class Student  {
 
     }
 
-    public Student(String email, String name) {
+
+    public Student(String student_id, String name, String date_of_birth, String address, String phone) {
+        this.student_id = student_id;
+        this.name = name;
+        this.date_of_birth = date_of_birth;
+        this.address = address;
+        this.phone = phone;
+    }
+
+    public Student(String email, String name, String imageUrl) {
         this.name = name;
         this.email = email;
+        this.imageUrl = imageUrl;
+    }
+
+    public Student(String student_id, String name, String date_of_birth, String address, String phone, String email, String imageUrl) {
+        this.student_id = student_id;
+        this.name = name;
+        this.date_of_birth = date_of_birth;
+        this.address = address;
+        this.phone = phone;
+        this.email = email;
+        this.imageUrl = imageUrl;
     }
 
     public Student(String student_id, String name, String date_of_birth, String address, String phone, String email, String class_id, String imageUrl, String role) {
@@ -34,6 +57,7 @@ public class Student  {
         this.imageUrl = imageUrl;
         this.role = role;
     }
+
 
     public String getStudent_id() {
         return student_id;
