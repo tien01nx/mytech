@@ -1,5 +1,7 @@
 package com.example.mytech.authentication;
 
+import static com.example.mytech.firebase.ConnectFirebase.refStudent;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -81,7 +83,7 @@ public class SignUpActivity extends AppCompatActivity {
 //                            String accountId = myRef.push().getKey();
 
                             Account account = new Account(email, password, username, "");
-                            Student student = new Student(username);
+                            Student student = new Student(email,username);
 
 //                            myRef.child(accountId).setValue(account).addOnCompleteListener(new OnCompleteListener<Void>() {
 //                                @Override
@@ -100,6 +102,9 @@ public class SignUpActivity extends AppCompatActivity {
 
 
                             // up dữ liệu lên firebase theo hasmap
+
+                            refStudent.child(userid).setValue(student);
+
                             myRef.setValue(account).addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {

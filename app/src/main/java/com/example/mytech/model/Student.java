@@ -18,8 +18,9 @@ public class Student  {
 
     }
 
-    public Student( String name) {
+    public Student(String email, String name) {
         this.name = name;
+        this.email = email;
     }
 
     public Student(String student_id, String name, String date_of_birth, String address, String phone, String email, String class_id, String imageUrl, String role) {
