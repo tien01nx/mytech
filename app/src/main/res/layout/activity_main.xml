@@ -8,19 +8,21 @@
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/viewPager"
-        android:layout_above="@+id/bottom_Navigation"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        android:layout_above="@+id/bottom_Navigation" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_Navigation"
-        android:layout_alignParentBottom="true"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:itemTextColor="@color/color_menu"
-        app:itemIconTint="@color/color_menu"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="0dp"
         android:background="@color/white"
-        app:menu="@menu/menu"/>
+        app:itemIconTint="@color/color_menu"
+        app:itemTextColor="@color/color_menu"
+        app:labelVisibilityMode="auto"
+        app:menu="@menu/menu" />
 
 
 </RelativeLayout>

@@ -58,6 +58,7 @@ public class ProfileFragment extends Fragment {
     TextView email;
     ImageView imageView;
     String image_logo_url;
+    Button btnSign_Out;
 
 
     // image
@@ -112,12 +113,7 @@ public class ProfileFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_profile, container, false);
 
-        name = view.findViewById(R.id.name_profile);
-        email = view.findViewById(R.id.email_profile);
-        dateofbirth = view.findViewById(R.id.date_of_birht);
-        address = view.findViewById(R.id.address);
-        phone = view.findViewById(R.id.phone);
-        imageView = view.findViewById(R.id.profile_image);
+        getViews(view);
 
 
         btnUpdateProfile = view.findViewById(R.id.button);
@@ -125,13 +121,17 @@ public class ProfileFragment extends Fragment {
         btnUpdateProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                Toast.makeText(getContext(), fUser.getUid(), Toast.LENGTH_SHORT).show();
-                Student student = new Student(fUser.getUid(),name.getText().toString(),dateofbirth.getText().toString(),
-                        address.getText().toString(),phone.getText().toString(),fUser.getEmail(),image_logo_url);
 
-                refStudent.child(fUser.getUid()).setValue(student);
+                HashMap<String, Object> map = new HashMap<>();
+
+                map.put("date_of_birth", dateofbirth.getText().toString());
+                map.put("name", name.getText().toString());
+                map.put("address", address.getText().toString());
+                map.put("phone", phone.getText().toString());
+
+                refStudent.child(fUser.getUid()).updateChildren(map);
                 Toast.makeText(getContext(), "Update thanh cong", Toast.LENGTH_SHORT).show();
-//
+
             }
         });
 
@@ -148,9 +148,9 @@ public class ProfileFragment extends Fragment {
 
 //                Toast.makeText(getContext(), student.getName(), Toast.LENGTH_SHORT).show();
 
-                if (student.getImageUrl().equals("default")){
+                if (student.getImageUrl().equals("default")) {
                     imageView.setImageResource(R.drawable.logo_default);
-                }else{
+                } else {
                     Glide.with(getContext()).load(student.getImageUrl()).into(imageView);
                     image_logo_url = student.getImageUrl();
                 }
@@ -166,7 +166,13 @@ public class ProfileFragment extends Fragment {
             }
         });
 
-
+        btnSign_Out.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FirebaseAuth.getInstance().signOut();
+                startActivity(new Intent(getActivity(), LoginActivity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+            }
+        });
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -176,6 +182,7 @@ public class ProfileFragment extends Fragment {
 
             }
         });
+
 
         return view;
 
@@ -190,10 +197,11 @@ public class ProfileFragment extends Fragment {
         startActivityForResult(i, IMAGE_REQUEST);
 
     }
-    private String getFileExtention(Uri uri){
+
+    private String getFileExtention(Uri uri) {
 
 
-        ContentResolver contentResolver =getContext().getContentResolver();
+        ContentResolver contentResolver = getContext().getContentResolver();
         MimeTypeMap mimeTypeMap = MimeTypeMap.getSingleton();
 
         return mimeTypeMap.getExtensionFromMimeType(contentResolver.getType(uri));
@@ -201,14 +209,14 @@ public class ProfileFragment extends Fragment {
     }
 
 
-    private void UploadMyImage(){
+    private void UploadMyImage() {
 
 
         final ProgressDialog progressDialog = new ProgressDialog(getContext());
         progressDialog.setMessage("Uploading");
         progressDialog.show();
 
-        if(imageUri != null) {
+        if (imageUri != null) {
             final StorageReference fileReference = storageReference.child(System.currentTimeMillis()
                     + "." + getFileExtention(imageUri));
 
@@ -218,9 +226,9 @@ public class ProfileFragment extends Fragment {
                 @Override
                 public Task<Uri> then(@NonNull Task<UploadTask.TaskSnapshot> task) throws Exception {
 
-                    if (!task.isSuccessful()){
+                    if (!task.isSuccessful()) {
 
-                        throw  task.getException();
+                        throw task.getException();
                     }
 
                     return fileReference.getDownloadUrl();
@@ -229,7 +237,7 @@ public class ProfileFragment extends Fragment {
                 @Override
                 public void onComplete(@NonNull Task<Uri> task) {
 
-                    if (task.isSuccessful()){
+                    if (task.isSuccessful()) {
 
                         Uri downloadUri = task.getResult();
                         String mUri = downloadUri.toString();
@@ -240,7 +248,7 @@ public class ProfileFragment extends Fragment {
                         refStudent.child(fUser.getUid()).updateChildren(map);
 
                         progressDialog.dismiss();
-                    }else{
+                    } else {
 
                         Toast.makeText(getContext(), "Failed!!", Toast.LENGTH_SHORT).show();
                     }
@@ -255,32 +263,31 @@ public class ProfileFragment extends Fragment {
             });
 
 
-        }else
-        {
+        } else {
             Toast.makeText(getContext(), "No Image Selected", Toast.LENGTH_SHORT).show();
         }
 
 
     }
+
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
 
-        if (requestCode == IMAGE_REQUEST &&  resultCode == RESULT_OK
-                && data != null && data.getData() != null){
+        if (requestCode == IMAGE_REQUEST && resultCode == RESULT_OK
+                && data != null && data.getData() != null) {
 
 
             imageUri = data.getData();
 
 
-            if (uploadTask != null && uploadTask.isInProgress()){
+            if (uploadTask != null && uploadTask.isInProgress()) {
 
                 Toast.makeText(getContext(), "Upload in progress..", Toast.LENGTH_SHORT).show();
 
 
-
-            }else {
+            } else {
 
                 UploadMyImage();
             }
@@ -288,4 +295,15 @@ public class ProfileFragment extends Fragment {
 
         }
     }
+
+    public void getViews(View view) {
+        name = view.findViewById(R.id.name_profile);
+        email = view.findViewById(R.id.email_profile);
+        dateofbirth = view.findViewById(R.id.date_of_birht);
+        address = view.findViewById(R.id.address);
+        phone = view.findViewById(R.id.phone);
+        imageView = view.findViewById(R.id.profile_image);
+        btnSign_Out = view.findViewById(R.id.btnSign_Out);
+    }
+
 }

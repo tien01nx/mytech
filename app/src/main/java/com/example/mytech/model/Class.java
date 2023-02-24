@@ -13,6 +13,8 @@ public class Class {
     // Số tiết học trong tuần của lớp học
 
     public Class() {
+
+
     }
 
     public Class(String class_id, String name, String subject_id, String teacher_id, String start_date, String end_date, int num_lessons_per_week) {

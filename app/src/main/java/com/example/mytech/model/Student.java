@@ -1,10 +1,12 @@
 package com.example.mytech.model;
 
 
-import android.widget.EditText;
-import android.widget.TextView;
 
-public class Student  {
+import androidx.databinding.BaseObservable;
+import androidx.databinding.Bindable;
+
+
+public class Student extends BaseObservable {
     // học viên
     private String student_id;
     private String name;
@@ -21,14 +23,6 @@ public class Student  {
 
     }
 
-
-    public Student(String student_id, String name, String date_of_birth, String address, String phone) {
-        this.student_id = student_id;
-        this.name = name;
-        this.date_of_birth = date_of_birth;
-        this.address = address;
-        this.phone = phone;
-    }
 
     public Student(String email, String name, String imageUrl) {
         this.name = name;
@@ -58,7 +52,7 @@ public class Student  {
         this.role = role;
     }
 
-
+    @Bindable
     public String getStudent_id() {
         return student_id;
     }
@@ -66,7 +60,7 @@ public class Student  {
     public void setStudent_id(String student_id) {
         this.student_id = student_id;
     }
-
+    @Bindable
     public String getName() {
         return name;
     }
@@ -75,6 +69,7 @@ public class Student  {
         this.name = name;
 
     }
+    @Bindable
     public String getDate_of_birth() {
         return date_of_birth;
     }
@@ -83,7 +78,7 @@ public class Student  {
         this.date_of_birth = date_of_bỉth;
 
     }
-
+    @Bindable
     public String getAddress() {
         return address;
     }
@@ -92,7 +87,7 @@ public class Student  {
         this.address = address;
 
     }
-
+    @Bindable
     public String getPhone() {
         return phone;
     }
@@ -101,7 +96,7 @@ public class Student  {
         this.phone = phone;
     }
 
-
+    @Bindable
     public String getEmail() {
         return email;
     }
@@ -110,7 +105,7 @@ public class Student  {
         this.email = email;
 
     }
-
+    @Bindable
     public String getClass_id() {
         return class_id;
     }
@@ -120,7 +115,7 @@ public class Student  {
 
     }
 
-
+    @Bindable
     public String getImageUrl() {
         return imageUrl;
     }
@@ -130,7 +125,7 @@ public class Student  {
 
     }
 
-
+    @Bindable
     public String getRole() {
         return role;
     }

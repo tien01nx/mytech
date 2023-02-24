@@ -4,11 +4,11 @@
     <item
         android:id="@+id/menu_home"
         android:icon="@drawable/home"
-        android:title="Student" />
+        android:title="@string/title_home"/>
 
     <item
         android:id="@+id/menu_profile"
         android:icon="@drawable/ic_baseline_person_pin_24"
-        android:title="Profile"/>
+        android:title="@string/title_profile"/>
 
 </menu>

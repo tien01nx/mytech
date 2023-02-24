@@ -7,7 +7,7 @@ public class Teacher {
 
    private String  teacher_id ;
     private String name ;
-    private Date date_of_birth ;
+    private String date_of_birth ;
     private String  address;
     private String phone;
     private String email ;
@@ -17,7 +17,7 @@ public class Teacher {
     public Teacher() {
     }
 
-    public Teacher(String teacher_id, String name, Date date_of_birth, String address, String phone, String email, String subject_id, String role) {
+    public Teacher(String teacher_id, String name, String date_of_birth, String address, String phone, String email, String subject_id, String role) {
         this.teacher_id = teacher_id;
         this.name = name;
         this.date_of_birth = date_of_birth;
@@ -44,11 +44,11 @@ public class Teacher {
         this.name = name;
     }
 
-    public Date getDate_of_birth() {
+    public String getDate_of_birth() {
         return date_of_birth;
     }
 
-    public void setDate_of_birth(Date date_of_birth) {
+    public void setDate_of_birth(String date_of_birth) {
         this.date_of_birth = date_of_birth;
     }
 

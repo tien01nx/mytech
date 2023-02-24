@@ -8,6 +8,7 @@ public class Account {
     private String role;
 
     public Account() {
+
     }
 
     public Account(String email, String password, String name, String role) {

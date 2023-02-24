@@ -14,6 +14,11 @@ public class ConnectFirebase {
     public static final DatabaseReference refStudent = FirebaseDatabase.getInstance().getReference("Students");
 
 
+    //Teacher
+    public static final DatabaseReference refTeacher = FirebaseDatabase.getInstance().getReference("Teachers");
+
+    //Schedule
+    public static final DatabaseReference refSchedule = FirebaseDatabase.getInstance().getReference("Schedules");
     //Storage image
     public static final StorageReference storageReference = FirebaseStorage.getInstance().getReference("uploads");
     // Account nguoi dung
