@@ -126,7 +126,7 @@ public class ProfileFragment extends Fragment {
             @Override
             public void onClick(View view) {
 //                Toast.makeText(getContext(), fUser.getUid(), Toast.LENGTH_SHORT).show();
-                Student student = new Student(fUser.getUid().toString(),name.getText().toString(),dateofbirth.getText().toString(),
+                Student student = new Student(fUser.getUid(),name.getText().toString(),dateofbirth.getText().toString(),
                         address.getText().toString(),phone.getText().toString(),fUser.getEmail(),image_logo_url);
 
                 refStudent.child(fUser.getUid()).setValue(student);
@@ -144,6 +144,8 @@ public class ProfileFragment extends Fragment {
 
                 name.setText(student.getName());
                 email.setText(student.getEmail());
+
+
 //                Toast.makeText(getContext(), student.getName(), Toast.LENGTH_SHORT).show();
 
                 if (student.getImageUrl().equals("default")){

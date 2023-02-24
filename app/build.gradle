@@ -7,6 +7,11 @@ android {
     namespace 'com.example.mytech'
     compileSdk 33
 
+
+    buildFeatures {
+        dataBinding = true
+    }
+
     defaultConfig {
         applicationId "com.example.mytech"
         minSdk 24
@@ -46,7 +51,6 @@ dependencies {
     // Import the Firebase BoM, no need for version number
     implementation platform('com.google.firebase:firebase-bom:31.2.0')
     implementation 'com.google.firebase:firebase-analytics-ktx'
-
 
 
     //firebase store
