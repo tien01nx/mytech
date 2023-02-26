@@ -5,12 +5,16 @@ import static com.example.mytech.firebase.ConnectFirebase.refStudent;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.mytech.MainActivity;
@@ -28,6 +32,7 @@ import com.google.firebase.database.FirebaseDatabase;
 public class SignUpActivity extends AppCompatActivity {
 
     EditText username, password, email;
+    TextView tv_Signup;
     Button btnSignUp;
 
     // lay useid khi người dùng đăng nhập
@@ -43,9 +48,20 @@ public class SignUpActivity extends AppCompatActivity {
         email = findViewById(R.id.email_signup);
         password = findViewById(R.id.password);
         btnSignUp = findViewById(R.id.btnSignup);
+        tv_Signup = findViewById(R.id.tv_Signup);
 
         //firebase auth
         auth = FirebaseAuth.getInstance();
+
+        tv_Signup.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(SignUpActivity.this,LoginActivity.class);
+                startActivity(i);
+                finish();
+
+            }
+        });
 
 
 
@@ -59,6 +75,7 @@ public class SignUpActivity extends AppCompatActivity {
         });
 
     }
+
 
     private void RegisterNow(final String username, String email, String password) {
 

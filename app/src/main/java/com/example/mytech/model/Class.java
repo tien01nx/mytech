@@ -10,14 +10,26 @@ public class Class {
     private String start_date;
     private String end_date;
     private int num_lessons_per_week;
+    private String status;
     // Số tiết học trong tuần của lớp học
+
+
+//    private String class_id;
+//    private String name_class;
+//    private String subject_id;
+//    private String teacher_id;
+//    private String start_date;
+//    private String end_date;
+//    private String status;
+//    private int number_ss;
 
     public Class() {
 
 
     }
 
-    public Class(String class_id, String name, String subject_id, String teacher_id, String start_date, String end_date, int num_lessons_per_week) {
+
+    public Class(String class_id, String name, String subject_id, String teacher_id, String start_date, String end_date, int num_lessons_per_week, String status) {
         this.class_id = class_id;
         this.name = name;
         this.subject_id = subject_id;
@@ -25,6 +37,7 @@ public class Class {
         this.start_date = start_date;
         this.end_date = end_date;
         this.num_lessons_per_week = num_lessons_per_week;
+        this.status = status;
     }
 
     public String getClass_id() {
@@ -81,5 +94,14 @@ public class Class {
 
     public void setNum_lessons_per_week(int num_lessons_per_week) {
         this.num_lessons_per_week = num_lessons_per_week;
+
     }
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
 }

@@ -51,6 +51,9 @@ public class MainActivity extends AppCompatActivity {
                         bottomNavigationView.getMenu().findItem(R.id.menu_home).setChecked(true);
                         break;
                     case 1:
+                        bottomNavigationView.getMenu().findItem(R.id.menu_student).setChecked(true);
+                        break;
+                    case 2:
                         bottomNavigationView.getMenu().findItem(R.id.menu_profile).setChecked(true);
                         break;
 
@@ -68,6 +71,9 @@ public class MainActivity extends AppCompatActivity {
                 switch (item.getItemId()){
                     case R.id.menu_home:
                         viewPager.setCurrentItem(0);
+                        break;
+                    case R.id.menu_student:
+                        viewPager.setCurrentItem(1);
                         break;
                     case R.id.menu_profile:
                         viewPager.setCurrentItem(1);

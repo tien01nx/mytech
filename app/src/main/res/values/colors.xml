@@ -20,4 +20,6 @@
 
     <color name="_bg__frame_ek2_color">#FFFFFF</color>
     <color name="sign_in_color">#000000</color>
+
+    <color name="hwid_auth_button_color_red">#EF484B</color>
 </resources>
